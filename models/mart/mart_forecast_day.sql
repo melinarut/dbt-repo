@@ -56,5 +56,5 @@ ordered_features as
 	from joining_day_location
 )
 
-select * from ordered_features;
+select * from ordered_features
 

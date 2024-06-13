@@ -35,5 +35,4 @@ aggregations_features AS (
     	ORDER BY city
     	)
     	
-SELECT * 
-FROM aggregations_features;
+SELECT * FROM aggregations_features
