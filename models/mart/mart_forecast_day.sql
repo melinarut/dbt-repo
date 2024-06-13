@@ -1,6 +1,6 @@
 with joining_day_location as (
-		select * from {{source("prep_forecast_day")}} 
-		left join {{source("staging_location")}}
+		select * from {{ref('prep_forecast_day')}} 
+		left join {{ref('staging_location')}}
 		using (city,region,country)
 	),
 	
