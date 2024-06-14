@@ -20,6 +20,7 @@ aggregations_features AS (
 				WHEN condition_text like '%rain%' then 'rainy_days'
 				WHEN condition_text like '%drizzle%' then 'rainy_days'
 				ELSE 'other_days' 
+                end as weather_bucket
             ,MAX(max_temp_c) AS max_temp_c
             ,MIN(min_temp_c) AS min_temp_c
             ,AVG(avg_temp_c) AS avg_temp_c
