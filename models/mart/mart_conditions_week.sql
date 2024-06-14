@@ -13,13 +13,13 @@ aggregations_features AS (
             ,lon            -- grouping on
             ,timezone_id    -- grouping on
             ,CASE
-				WHEN condition_text='Overcast' THEN 'cloudy_days'
-				WHEN condition_text='Moderate rain at times' then 'rainy_days'
-				WHEN condition_text='Moderate or heavy rain shower' then 'rainy_days'
-				WHEN condition_text='Patch rain possible' then 'rainy_days'
-				WHEN condition_text='Partly cloudy' then 'cloudy_days'
+				WHEN condition_text ='Sunny' THEN 'sunny_days'
+				WHEN condition_text in ('Overcast','Cloudy','Fog','Mist') THEN 'cloudy_days'
+				WHEN condition_text like 'Thundery outbreaks possible' then 'rainy_days'
+				WHEN condition_text like '%cloud%' then 'cloudy_days'
+				WHEN condition_text like '%rain%' then 'rainy_days'
+				WHEN condition_text like '%drizzle%' then 'rainy_days'
 				ELSE 'other_days' 
-				end as weather_bucket
             ,MAX(max_temp_c) AS max_temp_c
             ,MIN(min_temp_c) AS min_temp_c
             ,AVG(avg_temp_c) AS avg_temp_c
